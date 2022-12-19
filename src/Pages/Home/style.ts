@@ -17,3 +17,10 @@ export const StyledContent = styled.div`
   display: flex;
   flex-direction: column;
 `;
+export const StyledFlexBox = styled.div`
+  display: flex;
+`;
+export const StyledPostsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
