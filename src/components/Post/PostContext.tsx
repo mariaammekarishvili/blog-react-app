@@ -1,7 +1,7 @@
 import React, { useContext, createContext, useState, useEffect } from "react";
 import { getPosts } from "../../api/api";
 
-const PostContext = createContext({});
+const PostContext = createContext<any>({});
 
 function PostStore({ children }: any) {
   const [posts, setPosts] = useState<any[]>([]);
