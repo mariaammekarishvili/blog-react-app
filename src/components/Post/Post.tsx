@@ -1,30 +1,63 @@
-import { useEffect, useState } from "react";
 import styled from "styled-components";
+import DeleteIcon from "../../assets/svg/DeleteIcon";
+import EditIcon from "../../assets/svg/EditIcon";
 
-import { getPosts } from "../../api/api";
-import SendIcon from "../../assets/svg/SendIcon";
-import Comment from "../Comment";
-
+const StyledIconBox = styled.div`
+  position: absolute;
+  right: 10px;
+  top: 7px;
+  display: none;
+  align-items: center;
+  font-size: 14px;
+  & svg:first-child{
+    margin: 0 5px;
+    cursor: pointer;
+    & path{
+      fill: red;
+    }
+  }
+`
+const StyledEditButton = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #cdcfd2;
+  height: 25px;
+  border-radius: 8px;
+  width: auto;
+  padding:  0 10px;
+  cursor: pointer;
+`
 const StyledBox = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: white;
+  position: relative;
+  background-color: rgb(36,37,38);
   width: 100%;
   min-height: 40px;
   border-radius: 10px;
   margin: 10px 0;
   padding-bottom: 20px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  &:hover{
+    ${StyledIconBox}{
+      display: flex;
+    }
+  }
 `;
 const StyledHeader = styled.div`
-  padding: 15px;
+  padding: 15px 3px;
   font-weight: bold;
-  border-bottom: 1px solid #00000059;
-  width: 100%;
-  max-width: 100%;
+  margin-left: 15px;
+  border-bottom: 2px solid rgb(255,255,255,0.2);
+  min-width: 45%;
+  max-width: 90%;
+  color: white;
 `;
 const StyledContent = styled.div`
-  padding: 16px;
+  padding: 19px;
   width: 100%;
+  color: white;
 `;
 const StyledCommentInput = styled.input`
   border-radius: 20px;
@@ -52,8 +85,8 @@ type Props = {
   id: number;
   title: string;
   body: string;
-  handleDelete: (id: number) => void;
-  handleAction: (id: number) => void;
+  handleDelete: any;
+  handleAction: any;
 };
 const Post: React.FC<Props> = ({
   userId,
@@ -68,9 +101,10 @@ const Post: React.FC<Props> = ({
     <StyledBox>
       <StyledHeader>{title}</StyledHeader>
       <StyledContent>{body}</StyledContent>
-      <button onClick={() => handleAction(id)}>Edit</button>
-      <button onClick={() => handleDelete(id)}>Delete</button>
-
+      <StyledIconBox>
+        <DeleteIcon  onClick={() => handleDelete(id)}/>
+        <StyledEditButton onClick={() => handleAction(id)}>Edit</StyledEditButton>
+      </StyledIconBox>
 
       {/* <StyledTitle>Comments</StyledTitle>
       <Comment />

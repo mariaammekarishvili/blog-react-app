@@ -1,17 +1,20 @@
 import Card from "../../components/Card";
 import Posts from "../../components/Post";
-import { StyledContainer, StyledContent, StyledFlexBox, StyledPostsContainer } from "./style";
+import { PostStore } from "../../components/Post/PostContext";
+import {
+  StyledContainer,
+  StyledContent,
+  StyledFlexBox,
+  StyledPostsContainer,
+} from "./style";
 
 const Home: React.FC = (): JSX.Element => {
   return (
     <StyledContainer>
       <StyledContent>
-        <Card />
-        <StyledFlexBox>
-          <StyledPostsContainer>
-            <Posts />
-          </StyledPostsContainer>
-        </StyledFlexBox>
+        <PostStore>
+          <Posts />
+        </PostStore>
       </StyledContent>
     </StyledContainer>
   );

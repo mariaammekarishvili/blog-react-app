@@ -1,15 +1,21 @@
 import React, { useContext, createContext, useState, useEffect } from "react";
-import { getPosts } from "../../api/api";
+import { getPhotos, getPosts } from "../../api/api";
 
 const PostContext = createContext<any>({});
 
 function PostStore({ children }: any) {
   const [posts, setPosts] = useState<any[]>([]);
+  const [photos, setPhotos] = useState<any[]>([]);
   const [edit, setEdit] = useState<any>();
 
   const fetchPosts = async () => {
     const data = await getPosts();
     setPosts(data);
+  };
+
+  const fetchPhotos = async () => {
+    const data = await getPhotos();
+    setPhotos(data);
   };
 
   const handleDelete = (id: number) =>
@@ -37,7 +43,7 @@ function PostStore({ children }: any) {
   };
 
   useEffect(() => {
-    // fetchPosts(posts);
+    fetchPhotos();
     fetchPosts();
   }, []);
 
@@ -45,6 +51,7 @@ function PostStore({ children }: any) {
     <PostContext.Provider
       value={{
         posts,
+        photos,
         edit,
         handleDelete,
         handleAction,

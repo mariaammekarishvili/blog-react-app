@@ -9,7 +9,7 @@ export function PostList() {
       {posts?.length &&
         posts?.map(({ id, ...item }: any) => {
           return (
-            <div key={id} style={{ border: "1px solid black" }}>
+            <div key={id}>
               <Post
                 {...item}
                 id={id}
