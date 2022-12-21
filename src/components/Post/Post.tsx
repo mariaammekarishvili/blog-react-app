@@ -48,33 +48,38 @@ const StyledTitle = styled.p`
   font-weight: bold;
   margin: 15px 0 15px 15px;
 `;
-const Post: React.FC = (): JSX.Element => {
-  const [postsList, setPostsList] = useState<any>([]);
 
-  useEffect(() => {
-    getPosts().then((res) => {
-      console.log("pls log", res);
-      setPostsList((postsList: any) => [...postsList, res]);
-    });
-  }, []);
+type Props = {
+  userId: number;
+  id: number;
+  title: string;
+  body: string;
+  handleDelete: (id: number) => void;
+  handleAction: (id: number) => void;
+};
+const Post: React.FC<Props> = ({
+  userId,
+  id,
+  title,
+  body,
+  handleDelete,
+  handleAction,
+}): JSX.Element => {
 
   return (
     <StyledBox>
-      {postsList.map((post: any) => {
-        return (
-          <>
-            <StyledHeader>{post.title}</StyledHeader>
-            <StyledContent>{post.body}</StyledContent>
-          </>
-        );
-      })}
+      <StyledHeader>{title}</StyledHeader>
+      <StyledContent>{body}</StyledContent>
+      <button onClick={() => handleAction(id)}>Edit</button>
+      <button onClick={() => handleDelete(id)}>Delete</button>
 
-      <StyledTitle>Comments</StyledTitle>
+
+      {/* <StyledTitle>Comments</StyledTitle>
       <Comment />
       <StyledCommentBox>
         <StyledCommentInput placeholder="add comment" />
         <SendIcon />
-      </StyledCommentBox>
+      </StyledCommentBox> */}
     </StyledBox>
   );
 };
