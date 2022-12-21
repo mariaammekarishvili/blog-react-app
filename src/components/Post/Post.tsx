@@ -1,6 +1,11 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
+
+import { getPosts } from "../../api/api";
 import SendIcon from "../../assets/svg/SendIcon";
 import Comment from "../Comment";
+import { getAllPosts } from "../../services/reducers/postsActions";
 
 const StyledBox = styled.div`
   display: flex;
@@ -44,15 +49,26 @@ const StyledTitle = styled.p`
   margin: 15px 0 15px 15px;
 `;
 const Post: React.FC = (): JSX.Element => {
+  const [postsList, setPostsList] = useState<any>([]);
+
+  useEffect(() => {
+    getPosts().then((res) => {
+      console.log("pls log", res);
+      setPostsList((postsList: any) => [...postsList, res]);
+    });
+  }, []);
+
   return (
     <StyledBox>
-      <StyledHeader>Title</StyledHeader>
-      <StyledContent>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas eaque
-        expedita possimus officia facilis quam recusandae natus minus cumque
-        praesentium, ab cupiditate velit eum maiores, amet, sit laborum!
-        Dolorem, doloremque.
-      </StyledContent>
+      {postsList.map((post: any) => {
+        return (
+          <>
+            <StyledHeader>{post.title}</StyledHeader>
+            <StyledContent>{post.body}</StyledContent>
+          </>
+        );
+      })}
+
       <StyledTitle>Comments</StyledTitle>
       <Comment />
       <StyledCommentBox>
