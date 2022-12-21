@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { getPosts } from "../../api/api";
 import SendIcon from "../../assets/svg/SendIcon";
 import Comment from "../Comment";
-import { getAllPosts } from "../../services/reducers/postsActions";
 
 const StyledBox = styled.div`
   display: flex;
