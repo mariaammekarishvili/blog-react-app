@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { useDispatch, useSelector } from "react-redux";
 
 import { getPosts } from "../../api/api";
 import SendIcon from "../../assets/svg/SendIcon";

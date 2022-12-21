@@ -1,5 +1,5 @@
 import Card from "../../components/Card";
-import Post from "../../components/Post";
+import Posts from "../../components/Post";
 import { StyledContainer, StyledContent, StyledFlexBox, StyledPostsContainer } from "./style";
 
 const Home: React.FC = (): JSX.Element => {
@@ -9,7 +9,7 @@ const Home: React.FC = (): JSX.Element => {
         <Card />
         <StyledFlexBox>
           <StyledPostsContainer>
-            <Post />
+            <Posts />
           </StyledPostsContainer>
         </StyledFlexBox>
       </StyledContent>
