@@ -1,20 +1,25 @@
 import { useContext, createContext, useState, useEffect } from "react";
-import { createPost, deletePost, getPosts, updatePost } from "../../API/API";
+import {
+  createPostRequest,
+  deletePostRequest,
+  getPostsRequest,
+  updatePostRequest,
+} from "../../API/API";
 
 const PostContext = createContext<any>({});
 
 function PostStore({ children }: any) {
   const [posts, setPosts] = useState<any[]>([]);
   const [edit, setEdit] = useState<any>();
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
   const fetchPosts = async () => {
-    const data = await getPosts();
+    const data = await getPostsRequest();
     setPosts(data);
   };
 
   const handleDelete = async (id: number) => {
-    const response = await deletePost(id);
+    const response = await deletePostRequest(id);
     if (response.success) {
       setPosts(posts?.filter((post) => post?.id !== id));
     } else {
@@ -33,8 +38,8 @@ function PostStore({ children }: any) {
   };
 
   const handleUpdate = async (post: any) => {
-    setLoading(true)
-    const response = await updatePost(post);
+    setLoading(true);
+    const response = await updatePostRequest(post);
     if (response.success) {
       setPosts(
         posts?.map((item) =>
@@ -45,19 +50,19 @@ function PostStore({ children }: any) {
     } else {
       alert("Oops something wrong");
     }
-    setLoading(false)
+    setLoading(false);
   };
 
   const handleCreate = async (post: any) => {
-    setLoading(true)
-    const response = await createPost(post.title, post.body);
+    setLoading(true);
+    const response = await createPostRequest(post.title, post.body);
     if (response.success) {
       setPosts((prevState) => [...prevState, post]);
       clearModal();
     } else {
       alert("Oops something wrong");
     }
-    setLoading(false)
+    setLoading(false);
   };
 
   useEffect(() => {

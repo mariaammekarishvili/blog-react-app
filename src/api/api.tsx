@@ -1,9 +1,8 @@
 import axios from "axios";
-import { stringify } from "querystring";
 
 const API = "https://jsonplaceholder.typicode.com";
 
-export const getPosts = async () => {
+export const getPostsRequest = async () => {
   try {
     const result = await axios.get(`${API}/posts`);
     return result?.data;
@@ -12,7 +11,7 @@ export const getPosts = async () => {
   }
 };
 
-export const createPost = async (title: string, body: string) => {
+export const createPostRequest = async (title: string, body: string) => {
   try {
     const result = await axios.post(`${API}/posts`, {
       title: title,
@@ -30,7 +29,7 @@ export const createPost = async (title: string, body: string) => {
   }
 };
 
-export const updatePost = async (post: any) => {
+export const updatePostRequest = async (post: any) => {
   try {
     const result = await axios.put(`${API}/posts/${post.id}`, post);
     const data = result?.data;
@@ -44,7 +43,7 @@ export const updatePost = async (post: any) => {
   }
 };
 
-export const deletePost = async (postId: number) => {
+export const deletePostRequest = async (postId: number) => {
   try {
     const result = await axios.delete(`${API}/posts/${postId}`);
     const data = result?.data;
