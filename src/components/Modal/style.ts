@@ -23,5 +23,4 @@ export const StyledBox = styled.div`
   @media screen and (max-width: 780px) {
     width: 90%;
   }
-
 `;

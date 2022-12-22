@@ -1,10 +1,11 @@
 import { useContext, createContext, useState, useEffect } from "react";
+import { PostType } from "../../types/Types";
 import {
   createPostRequest,
   deletePostRequest,
   getPostsRequest,
   updatePostRequest,
-} from "../../API/API";
+} from "../../api/API";
 
 const PostContext = createContext<any>({});
 
@@ -37,7 +38,7 @@ function PostStore({ children }: any) {
     }
   };
 
-  const handleUpdate = async (post: any) => {
+  const handleUpdate = async (post: PostType) => {
     setLoading(true);
     const response = await updatePostRequest(post);
     if (response.success) {
@@ -53,7 +54,7 @@ function PostStore({ children }: any) {
     setLoading(false);
   };
 
-  const handleCreate = async (post: any) => {
+  const handleCreate = async (post: PostType) => {
     setLoading(true);
     const response = await createPostRequest(post.title, post.body);
     if (response.success) {

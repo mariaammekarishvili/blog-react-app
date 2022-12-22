@@ -1,4 +1,5 @@
 import axios from "axios";
+import { PostType } from "../types/Types";
 
 const API = "https://jsonplaceholder.typicode.com";
 
@@ -29,7 +30,7 @@ export const createPostRequest = async (title: string, body: string) => {
   }
 };
 
-export const updatePostRequest = async (post: any) => {
+export const updatePostRequest = async (post: PostType) => {
   try {
     const result = await axios.put(`${API}/posts/${post.id}`, post);
     const data = result?.data;
