@@ -2,7 +2,7 @@ import * as React from "react";
 const LoaderIcon = (
   props: JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>
 ) => (
-    <svg
+  <svg
     width="24px"
     height="24px"
     viewBox="0 0 20 20"
