@@ -14,27 +14,46 @@ export const getPosts = async () => {
 
 export const createPost = async (title: string, body: string) => {
   try {
-    const result = await axios.post(`${API}/posts`, {title: title, body: body, userId: 1})
-    return result?.data
+    const result = await axios.post(`${API}/posts`, {
+      title: title,
+      body: body,
+      userId: 1,
+    });
+    const data = result?.data;
+    return {
+      data,
+      success: true,
+    };
   } catch (err) {
-    console.error(err)
-  }
-}
-
-export const editPost = async (post: any) => {
-  try {
-    const result = await axios.put(`${API}/posts/${post.id}`, post)
-    return result?.data 
-   }catch (err) {
     console.error(err);
+    return { success: false };
   }
-}
+};
+
+export const updatePost = async (post: any) => {
+  try {
+    const result = await axios.put(`${API}/posts/${post.id}`, post);
+    const data = result?.data;
+    return {
+      data,
+      success: true,
+    };
+  } catch (err) {
+    console.error(err);
+    return { success: false };
+  }
+};
 
 export const deletePost = async (postId: number) => {
   try {
-    const result = await axios.put(`${API}/posts/${postId}`)
-    return result?.data 
-   }catch (err) {
+    const result = await axios.delete(`${API}/posts/${postId}`);
+    const data = result?.data;
+    return {
+      data,
+      success: true,
+    };
+  } catch (err) {
     console.error(err);
+    return { success: false };
   }
-}
+};
