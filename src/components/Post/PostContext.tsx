@@ -1,5 +1,5 @@
 import { useContext, createContext, useState, useEffect } from "react";
-import { PostType } from "../../types/Types";
+import { PostType } from "../../types/types";
 import {
   createPostRequest,
   deletePostRequest,
