@@ -17,4 +17,11 @@ export const StyledBox = styled.div`
   place-content: center;
   place-items: center;
   width: 40%;
+  @media screen and (max-width: 1200px) {
+    width: 60%;
+  }
+  @media screen and (max-width: 780px) {
+    width: 90%;
+  }
+
 `;

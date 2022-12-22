@@ -10,11 +10,17 @@ export const StyledContainer = styled.div`
   background: #18191a;
 `;
 export const StyledContent = styled.div`
-  width: 1000px;
-  padding-top: 20px;
+  width: 700px;
+  padding-top: 10px;
   max-width: 50%;
   display: flex;
   flex-direction: column;
+  @media screen and (max-width: 1200px) {
+    max-width: 80%;
+  }
+  @media screen and (max-width: 780px) {
+    max-width: 90%;
+  }
 `;
 export const StyledFlexBox = styled.div`
   display: flex;

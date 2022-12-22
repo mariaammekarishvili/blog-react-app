@@ -70,7 +70,7 @@ export const StyledTextarea = styled.textarea`
   margin-bottom: 10px;
   color: #f5faff;
   padding: 10px;
-  font-size: 16px;
+  font-size: 14px;
   &.body {
     min-height: 90px;
   }
@@ -120,6 +120,7 @@ export const StyledInput = styled.input`
   margin-bottom: 10px;
   color: #f5faff;
   padding: 0 10px;
+  font-size: 14px;
 `;
 export const StyledHeader = styled.div`
   padding: 15px 3px;
