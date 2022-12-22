@@ -1,4 +1,5 @@
 import { useState } from "react";
+import LoaderIcon from "../../assets/svg/LoaderIcon";
 import { usePostContext } from "./PostContext";
 import {
   StyledBox,
@@ -8,12 +9,17 @@ import {
   StyledTextarea,
 } from "./style";
 
-function ActionButton({ type, action, data }: any) {
-  return <StyledButton onClick={() => action(data)}>{type}</StyledButton>;
+function ActionButton({ type, action, data, loading }: any) {
+  return (
+    <StyledButton onClick={() => action(data)}>
+      {loading ? <LoaderIcon /> : type}
+    </StyledButton>
+  );
 }
 
 export function PostAction() {
-  const { edit, handleUpdate, clearModal, handleCreate } = usePostContext();
+  const { edit, handleUpdate, clearModal, handleCreate, loading } =
+    usePostContext();
   const [application, setApplication] = useState(
     edit
       ? { ...edit }
@@ -55,12 +61,18 @@ export function PostAction() {
           required
         />
         {Object.keys(edit).length > 1 ? (
-          <ActionButton type="Save" data={application} action={handleUpdate} />
+          <ActionButton
+            type="Save"
+            data={application}
+            action={handleUpdate}
+            loading={loading}
+          />
         ) : (
           <ActionButton
             type="Create"
             data={application}
             action={handleCreate}
+            loading={loading}
           />
         )}
       </StyledBox>

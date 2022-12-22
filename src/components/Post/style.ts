@@ -89,6 +89,26 @@ export const StyledButton = styled.button`
   margin-top: 5px;
   background-color: #2374e1;
   border: none;
+  & svg {
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+    @-webkit-keyframes spin {
+      0% {
+        -webkit-transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+      }
+    }
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  }
 `;
 export const StyledInput = styled.input`
   background-color: rgb(0, 0, 0, 0.3);
