@@ -1,8 +1,15 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { usePostContext } from "./PostContext";
+import {
+  StyledBox,
+  StyledButton,
+  StyledCoseBox,
+  StyledInput,
+  StyledTextarea,
+} from "./style";
 
 function ActionButton({ type, action, data }: any) {
-  return <button onClick={() => action(data)}>{type}</button>;
+  return <StyledButton onClick={() => action(data)}>{type}</StyledButton>;
 }
 
 export function PostAction() {
@@ -28,54 +35,29 @@ export function PostAction() {
 
   return (
     <>
-      <div>
-        <button onClick={clearModal} style={{ float: "right" }}>
-          X
-        </button>
-        <div
-          style={{
-            display: "flex",
-            placeContent: "center",
-            flexDirection: "column",
-          }}
-          onChange={updateFields}
-        >
-          <label htmlFor="userId">User*:</label>
-          <input
-            type="text"
-            id="userId"
-            defaultValue={application?.userId}
-            required
+      <StyledBox className="create">
+        <StyledCoseBox onClick={clearModal} style={{ float: "right" }}>
+          x
+        </StyledCoseBox>
+        <h2>Create New Post</h2>
+        <StyledInput id="title" defaultValue={application?.title} required />
+        <StyledTextarea
+          placeholder="Enter description"
+          className="body"
+          id="body"
+          defaultValue={application?.body}
+          required
+        />
+        {Object.keys(edit).length > 1 ? (
+          <ActionButton type="Save" data={application} action={handleUpdate} />
+        ) : (
+          <ActionButton
+            type="Create"
+            data={application}
+            action={handleCreate}
           />
-          <label htmlFor="title">Title*: </label>
-          <input
-            type="text"
-            id="title"
-            defaultValue={application?.title}
-            required
-          />
-          <label htmlFor="body">Text*:</label>
-          <input
-            type="text"
-            id="body"
-            defaultValue={application?.body}
-            required
-          />
-          {Object.keys(edit).length > 1 ? (
-            <ActionButton
-              type="Save"
-              data={application}
-              action={handleUpdate}
-            />
-          ) : (
-            <ActionButton
-              type="Create"
-              data={application}
-              action={handleCreate}
-            />
-          )}
-        </div>
-      </div>
+        )}
+      </StyledBox>
     </>
   );
 }

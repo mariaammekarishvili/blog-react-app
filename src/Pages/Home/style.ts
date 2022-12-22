@@ -7,9 +7,8 @@ export const StyledContainer = styled.div`
   justify-content: center;
   background-size: cover;
   background-repeat: no-repeat;
-  background: #18191A;
+  background: #18191a;
 `;
-
 export const StyledContent = styled.div`
   width: 1000px;
   padding-top: 20px;
