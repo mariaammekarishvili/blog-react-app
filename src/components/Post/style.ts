@@ -75,7 +75,7 @@ export const StyledTextarea = styled.textarea`
     min-height: 90px;
   }
 `;
-export const StyledButton = styled.div`
+export const StyledButton = styled.button`
   color: white;
   display: flex;
   align-items: center;
@@ -88,6 +88,7 @@ export const StyledButton = styled.div`
   cursor: pointer;
   margin-top: 5px;
   background-color: #2374e1;
+  border: none;
 `;
 export const StyledInput = styled.input`
   background-color: rgb(0, 0, 0, 0.3);

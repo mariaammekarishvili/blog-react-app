@@ -35,12 +35,18 @@ export function PostAction() {
 
   return (
     <>
-      <StyledBox className="create">
+      <StyledBox className="create" onChange={updateFields}>
         <StyledCoseBox onClick={clearModal} style={{ float: "right" }}>
           x
         </StyledCoseBox>
         <h2>Create New Post</h2>
-        <StyledInput id="title" defaultValue={application?.title} required />
+        <StyledInput
+          placeholder="Enter title"
+          type="text"
+          id="title"
+          defaultValue={application?.title}
+          required
+        />
         <StyledTextarea
           placeholder="Enter description"
           className="body"

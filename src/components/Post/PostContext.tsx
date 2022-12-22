@@ -1,5 +1,5 @@
 import { useContext, createContext, useState, useEffect } from "react";
-import { getPosts } from "../../api/api";
+import { getPosts } from "../../API/API";
 
 const PostContext = createContext<any>({});
 
@@ -15,8 +15,9 @@ function PostStore({ children }: any) {
   const handleDelete = (id: number) =>
     setPosts(posts?.filter((post) => post?.id !== id));
 
-  const handleAction = (id: number) =>
+  const handleAction = (id: number) => {
     setEdit(id ? posts?.find((post) => post?.id === id) : { id: Date.now() });
+  };
 
   const clearModal = () => {
     if (edit) {
