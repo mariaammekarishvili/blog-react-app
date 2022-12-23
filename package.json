@@ -1,4 +1,5 @@
 {
+  "homepage": "https://mariaammekarishvili.github.io/blog-react-app/",
   "name": "blog-react-app",
   "version": "0.1.0",
   "private": true,
@@ -19,7 +20,6 @@
     "typescript": "^4.9.4",
     "web-vitals": "^2.1.4"
   },
-  "homepage": "https://mariaammekarishvili.github.io/blog-react-app/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
