@@ -5,7 +5,7 @@ import {
   deletePostRequest,
   getPostsRequest,
   updatePostRequest,
-} from "../../api/API";
+} from "../../api/api";
 
 const PostContext = createContext<any>({});
 
